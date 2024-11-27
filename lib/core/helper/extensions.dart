@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// why use extension تجنب التكرار: يمكنك تجميع الوظائف الشائعة التي تستخدمها في أماكن متعددة 
+
+// why use extension تجنب التكرار: يمكنك تجميع الوظائف الشائعة التي تستخدمها في أماكن متعددة
 extension Navigation on BuildContext {
   Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);
