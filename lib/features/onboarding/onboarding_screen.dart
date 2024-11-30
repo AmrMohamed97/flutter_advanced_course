@@ -20,11 +20,11 @@ class OnboardingScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const DocLogoAndName(),
+                DocLogoAndName(),
                 SizedBox(
                   height: 30.h,
                 ),
-                const DoctorImageAndText(),
+                DoctorImageAndText(),
                 Padding(
                     padding: EdgeInsets.symmetric(horizontal: 30.h),
                     child: Column(
@@ -34,7 +34,9 @@ class OnboardingScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyles.font13GreyRegular,
                         ),
-                        const CustomButton(title: 'Get Started',),
+                        const CustomButton(
+                          title: 'Get Started',
+                        ),
                       ],
                     )),
               ],
