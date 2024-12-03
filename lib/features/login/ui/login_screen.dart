@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_complete_project/core/theaming/styles.dart';
-import 'package:flutter_complete_project/core/widgets/app_text_field.dart';
 import 'package:flutter_complete_project/core/widgets/custom_button.dart';
+import 'package:flutter_complete_project/features/login/data/models/login_request_body.dart';
+import 'package:flutter_complete_project/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_project/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:flutter_complete_project/features/login/ui/widgets/email_and_password.dart';
+import 'package:flutter_complete_project/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:flutter_complete_project/features/login/ui/widgets/termis_and_conditions_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  bool isShown = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,40 +35,23 @@ class _LoginScreenState extends State<LoginScreen> {
                     style: TextStyles.font14GreyRegular.copyWith(height: 1.5),
                   ),
                   25.verticalSpace,
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AppTextField(
-                          hintText: 'Email',
-                          radius: 16,
-                        ),
-                        16.verticalSpace,
-                        AppTextField(
-                          hintText: 'Password',
-                          radius: 16,
-                          obscureText: isShown ? false : true,
-                          suffixIcon: GestureDetector(
-                            onTap: () {
-                              isShown = !isShown;
-                              setState(() {});
-                            },
-                            child: isShown
-                                ? Icon(Icons.visibility_off)
-                                : Icon(Icons.remove_red_eye),
-                          ),
-                        ),
-                        35.verticalSpace,
-                        CustomButton(
-                          title: 'Create Account',
-                        ),
-                        46.verticalSpace,
-                        TermisAndConditionsText(),
-                        20.verticalSpace,
-                        AlreadyHaveAccountText(),
-                      ],
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      EmailAndPassword(),
+                      35.verticalSpace,
+                      CustomButton(
+                        title: 'Create Account',
+                        onPressed: () {
+                          validateThenDoLogin(context);
+                        },
+                      ),
+                      46.verticalSpace,
+                      TermisAndConditionsText(),
+                      20.verticalSpace,
+                      AlreadyHaveAccountText(),
+                      LoginBlocListener()
+                    ],
                   ),
                 ],
               ),
@@ -80,5 +60,16 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void validateThenDoLogin(BuildContext context) {
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
+      context.read<LoginCubit>().emitLoginStates(
+            loginRequestBody: LoginRequestBody(
+              email: context.read<LoginCubit>().emailController.text,
+              password: context.read<LoginCubit>().passwordController.text,
+            ),
+          );
+    }
   }
 }

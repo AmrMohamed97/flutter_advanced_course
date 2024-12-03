@@ -12,16 +12,15 @@ class CustomButton extends StatelessWidget {
       this.height,
       this.horizontalPadding,
       this.verticalPadding,
-      this.backgroundColor, required this.title});
+      this.backgroundColor, required this.title, this.onPressed});
   final double? width, height, horizontalPadding, verticalPadding;
   final Color? backgroundColor;
   final String title;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        context.pushNamed(Routes.loginScreen);
-      },
+      onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(
           backgroundColor ?? ColorsManager.mainBlue,
