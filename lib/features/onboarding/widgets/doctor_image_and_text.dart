@@ -11,6 +11,8 @@ class DoctorImageAndText extends StatelessWidget {
       children: [
         SvgPicture.asset('assets/svgs/docLogoLowOpacity.svg'),
         Container(
+          // height: 200,
+          // width: 200,
           foregroundDecoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -21,6 +23,11 @@ class DoctorImageAndText extends StatelessWidget {
               end: Alignment.topCenter,
               stops: const [.14, .4],
             ),
+            // image: DecorationImage(
+            //   image: const AssetImage(
+            //     'assets/images/onboardingDoctor.png',
+            //   ),
+            // )
           ),
           child: Image.asset('assets/images/onboardingDoctor.png'),
         ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_project/core/helper/extensions.dart';
+import 'package:flutter_complete_project/core/routing/routes.dart';
 import 'package:flutter_complete_project/core/theaming/styles.dart';
 import 'package:flutter_complete_project/features/onboarding/widgets/doc_logo_and_name.dart';
 import 'package:flutter_complete_project/features/onboarding/widgets/doctor_image_and_text.dart';
@@ -34,8 +36,11 @@ class OnboardingScreen extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyles.font13GreyRegular,
                         ),
-                        const CustomButton(
+                        CustomButton(
                           title: 'Get Started',
+                          onPressed: () {
+                            context.pushNamed(Routes.loginScreen);
+                          },
                         ),
                       ],
                     )),
