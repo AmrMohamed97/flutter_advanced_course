@@ -4,7 +4,7 @@ import 'package:flutter_complete_project/core/theaming/styles.dart';
 import 'package:flutter_complete_project/core/widgets/custom_button.dart';
 import 'package:flutter_complete_project/features/login/data/models/login_request_body.dart';
 import 'package:flutter_complete_project/features/login/logic/cubit/login_cubit.dart';
-import 'package:flutter_complete_project/features/login/ui/widgets/already_have_account_text.dart';
+import 'package:flutter_complete_project/features/login/ui/widgets/donot_have_account_text.dart';
 import 'package:flutter_complete_project/features/login/ui/widgets/email_and_password.dart';
 import 'package:flutter_complete_project/features/login/ui/widgets/login_bloc_listener.dart';
 import 'package:flutter_complete_project/features/login/ui/widgets/termis_and_conditions_text.dart';
