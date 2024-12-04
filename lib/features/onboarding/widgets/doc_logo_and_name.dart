@@ -8,7 +8,7 @@ class DocLogoAndName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return    Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(
@@ -20,7 +20,7 @@ class DocLogoAndName extends StatelessWidget {
         ),
         Text(
           'Docdoc',
-          style: TextStyles.font24Black700Weight,
+          style: TextStyles.font24BlackBlod,
         )
       ],
     );
