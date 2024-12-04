@@ -6,6 +6,8 @@ import 'package:flutter_complete_project/features/home/ui/home_screen.dart';
 import 'package:flutter_complete_project/features/login/logic/cubit/login_cubit.dart';
 import 'package:flutter_complete_project/features/login/ui/login_screen.dart';
 import 'package:flutter_complete_project/features/onboarding/onboarding_screen.dart';
+import 'package:flutter_complete_project/features/sign_up/logic/sign_up_cubit.dart';
+import 'package:flutter_complete_project/features/sign_up/ui/sign_up_screen.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
@@ -13,17 +15,23 @@ class AppRouter {
       case Routes.onboardingScreen:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => BlocProvider(
-          create: (context) => getIt.get<LoginCubit>(),
-          child: const LoginScreen()));  
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                create: (context) => getIt.get<LoginCubit>(),
+                child: const LoginScreen()));
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());    
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case Routes.signUpScreen:
+        return MaterialPageRoute(builder: (_) => BlocProvider(
+            create: (context) => getIt.get<SignupCubit>(),
+          child: const SignupScreen()));
       default:
-        return MaterialPageRoute(builder: (_) => Scaffold(
-          body: Center(
-            child: Text('No route defined for ${settings.name}'),
-          ),
-        ));
+        return MaterialPageRoute(
+            builder: (_) => Scaffold(
+                  body: Center(
+                    child: Text('No route defined for ${settings.name}'),
+                  ),
+                ));
     }
   }
 }

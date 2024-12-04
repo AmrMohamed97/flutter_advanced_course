@@ -69,8 +69,8 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 setState(() {});
               },
               child: isShown
-                  ? Icon(Icons.visibility_off)
-                  : Icon(Icons.remove_red_eye),
+                  ? Icon(Icons.remove_red_eye)
+                  : Icon(Icons.visibility_off),
             ),
             validator: (val) {
               if (val!.isEmpty) {
