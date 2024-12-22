@@ -4,7 +4,6 @@ import 'package:flutter_complete_project/core/routing/routes.dart';
 import 'package:flutter_complete_project/core/theaming/colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-//docApp
 class DocApp extends StatelessWidget {
   final AppRouter appRouter;
   const DocApp({super.key, required this.appRouter});
