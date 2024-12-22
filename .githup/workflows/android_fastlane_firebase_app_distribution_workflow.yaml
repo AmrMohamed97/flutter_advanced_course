@@ -7,7 +7,7 @@ on:
 
 jobs:
   distribute_to_firebase: #obtional naming i named it as i want
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - name: Checkout my repo code   #optional naming describe what action will do
       uses: actions/checkout@v2  #command in github action , to checkout my repo code
