@@ -47,6 +47,9 @@ jobs:
       #line 37 " bundle exec" make workflow faster ,this name "firebase_distribution" is not optional must be same as lane name in Fastfile
       #must change version in yaml when i push
       - name: Build and Distribute App
+        run: flutter  pub get
+
+      - name: Build and Distribute App
         run: flutter run --no-enable-impeller -t lib/main_development.dart
 
       - name: Upload APK
